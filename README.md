@@ -21,7 +21,7 @@ The script helps you create and run the container with MongoDB
 **Config**
 - config.yml
 
-You should modify the config.yml first
+You should modify the config.yml, create a db and a collection
 
 # Existing API
 - Post /history
