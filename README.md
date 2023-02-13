@@ -13,10 +13,10 @@ Build an application that can
 
 The container contains MongoDB
 
-**Make**
-- Makefile
+**Run conainter**
+> sh docker.sh
 
-The makefile helps you create and run the container with MongoDB
+The script helps you create and run the container with MongoDB
 
 **Config**
 - config.yml
@@ -25,8 +25,11 @@ You should modify the config.yml first
 
 # Existing API
 - Post /history
+
 Save the user message sent to linebot
 - Get /history
+
 Get the history messages of a specific user
 - Post /message
+
 Send a message from a linebot to a specific user
