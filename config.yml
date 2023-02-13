@@ -1,0 +1,6 @@
+channel_access_token: "qZ0nX7bdmeVS+++OfbYibvDGcjuBoQ6bTCyJHld8ukERf4dmSYIT+JrsdvTe6IGJrjXEB+gkZt6ZatWxUH4iRpXS9BSXhl2XxOU5jCGuXdcFWhO0UxJD1ywvzaWqbqljwzv/5z3SfAYM7CDvpv9tVwdB04t89/1O/w1cDnyilFU="
+channel_secret: "d3bdfbd6d303af06fc8e76010b3241e7"
+db_name: "mydb"
+collection_name: "histories"
+mongodb_address: "127.0.0.1:27017"
+address: ":8080"
