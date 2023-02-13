@@ -37,8 +37,33 @@ func NewLineBot() *LineBot {
 }
 
 func (l *LineBot) Start() {
+	l.Router.POST("/message", l.SendMessageToName)
 	l.Router.POST("/history", l.CreateHistory)
 	l.Router.Run(l.Config.Address)
+}
+
+func (l *LineBot) SendMessageToName(c *gin.Context) {
+	name := c.PostForm("name")
+	msg := c.PostForm("msg")
+
+	history, err := l.Repo.FindOneHistoryByName(name)
+	if err != nil {
+		log.Print(err)
+		c.JSON(http.StatusOK, gin.H{"status": "db error"})
+		return
+	}
+	if history == nil {
+		c.JSON(http.StatusOK, gin.H{"status": "uid not found"})
+		return
+	}
+
+	_, err = l.Bot.PushMessage(history.Uid, linebot2.NewTextMessage(msg)).Do()
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"status": "send message failed"})
+		log.Print(err)
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"status": "message sent"})
 }
 
 func (l *LineBot) CreateHistory(c *gin.Context) {
