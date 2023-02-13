@@ -23,6 +23,9 @@ The script helps you create and run the container with MongoDB
 
 You should modify the config.yml, create a db and a collection
 
+**Run**
+> go run . linebot
+
 # Existing API
 - Post /history
 
