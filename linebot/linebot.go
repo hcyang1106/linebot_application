@@ -1,6 +1,7 @@
 package linebot
 
 import (
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/hcyang1106/awesomeProject/config"
 	"github.com/hcyang1106/awesomeProject/model"
@@ -37,9 +38,23 @@ func NewLineBot() *LineBot {
 }
 
 func (l *LineBot) Start() {
+	l.Router.GET("/history", l.GetHistoriesByName)
 	l.Router.POST("/message", l.SendMessageToName)
 	l.Router.POST("/history", l.CreateHistory)
 	l.Router.Run(l.Config.Address)
+}
+
+func (l *LineBot) GetHistoriesByName(c *gin.Context) {
+	name := c.Query("name")
+	histories, err := l.Repo.GetHistoriesByName(name)
+	if err != nil {
+		log.Print(err)
+	}
+	json, err := json.Marshal(histories)
+	if err != nil {
+		log.Print(err)
+	}
+	c.Data(http.StatusOK, "text/plain; charset=utf-8;", json)
 }
 
 func (l *LineBot) SendMessageToName(c *gin.Context) {
