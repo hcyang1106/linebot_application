@@ -1,5 +1,3 @@
-# CINNOX interview practice
-
 # Introduction
 Build an application that can
 1. Save the messages that line users sent to the bot
