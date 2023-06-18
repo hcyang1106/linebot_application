@@ -1,7 +1,7 @@
 # Introduction
 Build an application that can
-1. Save the messages that line users sent to the bot
-2. Let the bot send messages to line users
+1. Save the messages that Line (A popular communication app) users sent to the bot
+2. Let the bot send messages to Line users
 3. Get the history messages the user has sent to the bot   
 
 
